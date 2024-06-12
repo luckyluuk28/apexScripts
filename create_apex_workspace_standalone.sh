@@ -59,7 +59,7 @@ Options:
 -ips --ignore-password-strength Ignore password strength requirements. (default: N)
 -v   --verbose                  Verbose output. (default: N)
 -h   --help                     Displays this help message.
-    "
+"
     exit 0
 }
 
@@ -286,7 +286,7 @@ if [[ -z "$workspace_schema" ]]; then
     workspace_schema="$workspace_name"
 fi
 
-# Get the schema password if not provided (Needs to be here to ensure $password_length is set)
+# Get the schema password if not provided
 if [[ -z "$schema_password" && "$generate_random_password" == "Y" ]]; then
     schema_password=$(openssl rand -base64 "$password_length" | tr -d '/+=')
     echo "Generated random schema password: $schema_password for $workspace_schema"
@@ -307,7 +307,6 @@ else
     usage 1
 fi
 
-# Parent directory is only created at previous step: `mkdir -p "$tmp_git_dir"`
 # Create the SQL script, run it as oracle user to create the workspace and user (schema) if they dont exist.
 sql_script=$(cat << EOF
 connect $sysdba_username/$sysdba_password as sysdba
