@@ -384,6 +384,6 @@ end;
 EOF
 )
 
-runScript "$sql_script" "cd /home/$oracle_user/apex/ && sql /nolog" "$no_password_sudoer" "$oracle_user" "$oracle_password" | parseOutput
+runScript "$sql_script" "sql /nolog" "$no_password_sudoer" "$oracle_user" "$oracle_password" | parseOutput
 
 exit 0
